@@ -1,57 +1,47 @@
 #include <iostream>
 #include <vector>
-#include <stack>
 
-using std::pair;
-using std::stack;
 using std::vector;
+using std::pair;
 
-int number_of_components(vector<vector<int>> &adj, int n)
+
+int cc = 0;
+void explore(vector<vector<int>> &adj, int v, bool* visited)
 {
-  int res = 0;
-  //write your code here
+  visited[v] = true;
+  for(auto x : adj[v])
+  {
+    if(!visited[x])
+      explore(adj,x,visited);
+  }
+}
+
+void DFS(vector<vector<int>> &adj, size_t n)
+{
   bool visited[n];
-  for (int i = 0; i > n; i++)
+  for(int i =0;i<n;i++)
     visited[i] = false;
 
-  stack<int> st;
-  for (int i = 0; i < n; i++)
+  for(int i = 0 ;i < adj.size(); i++)
   {
     if (!visited[i])
     {
-      res++;
-      visited[i] = true;
-      st.push(i);
-    }
-
-    while (!st.empty())
-    {
-      int ele = st.top();
-      st.pop();
-      for (auto x : adj[ele])
-      {
-        if (!visited[x])
-        {
-          visited[x] = true;
-          st.push(x);
-        }
-      }
+      explore(adj,i,visited);
+      cc++;
     }
   }
-  return res;
 }
 
-int main()
-{
+int main() {
   size_t n, m;
   std::cin >> n >> m;
-  vector<vector<int>> adj(n, vector<int>());
-  for (size_t i = 0; i < m; i++)
-  {
+  vector<vector<int> > adj(n, vector<int>());
+  for (size_t i = 0; i < m; i++) {
     int x, y;
     std::cin >> x >> y;
     adj[x - 1].push_back(y - 1);
     adj[y - 1].push_back(x - 1);
   }
-  std::cout << number_of_components(adj, n);
+  DFS(adj,n);
+  std::cout<<cc;
 }
