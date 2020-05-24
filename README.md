@@ -1,6 +1,10 @@
 # Algorithms-on-graphs
 Self Learning Repository For Graph Algorithms
 
+- will be soon updating the repository it is completely up to date.
+- watch the repository for further updates
+- documentation is also poor, trying to fix this soon
+
 # Representation Of Graphs In Above Files
 In programming assignments, graphs are given as follows. The first line contains non-negative integers n and
 m — the number of vertices and the number of edges respectively. The vertices are always numbered from 1
@@ -80,4 +84,5 @@ Language    C | C++ | Java | Python  |  C#  |  Haskell | JavaScript |  Ruby |  S
 --------------------------------------------------------------------------------------
 Time        1 |  1  |  1.5 |    5    |  1.5 |   2      |      5     |    5  |  5     |
 ```
-### Solution reachability.cpp
+### Solution
+reachability.cpp
